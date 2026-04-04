@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luciano Pereira | Cloud Solution Architect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:    #0078d4;
+      --blue-dk: #005a9e;
+      --navy:    #1a2a3a;
+      --teal:    #00b4d8;
+      --light:   #f0f4f8;
+      --text:    #2d3748;
+      --muted:   #718096;
+      --white:   #ffffff;
+      --card:    #ffffff;
+      --border:  #e2e8f0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,42,58,.97);
+      backdrop-filter: blur(8px);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 2px 16px rgba(0,0,0,.3);
+    }
+    .nav-brand {
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: .5px;
+    }
+    .nav-brand span { color: var(--teal); }
+    .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, #0f2238 60%, #0d1b2a 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 100px 2rem 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(0,180,216,.12) 0%, transparent 60%);
+    }
+    .hero-inner {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+    }
+    .avatar-wrap {
+      flex-shrink: 0;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      padding: 4px;
+      box-shadow: 0 0 40px rgba(0,180,216,.4);
+    }
+    .avatar-inner {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2c4a6e, #1a3a5c);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--teal);
+      letter-spacing: -2px;
+      overflow: hidden;
+    }
+    .avatar-inner img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .hero-text { flex: 1; }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(0,180,216,.15);
+      border: 1px solid rgba(0,180,216,.4);
+      color: var(--teal);
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: .3rem .8rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+    .hero-name {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: .5rem;
+    }
+    .hero-title {
+      font-size: 1rem;
+      color: var(--teal);
+      font-weight: 500;
+      margin-bottom: .6rem;
+    }
+    .hero-location {
+      font-size: .85rem;
+      color: rgba(255,255,255,.55);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .hero-summary {
+      font-size: .95rem;
+      color: rgba(255,255,255,.78);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+      max-width: 520px;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      padding: .65rem 1.5rem;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .2s;
+      display: inline-flex; align-items: center; gap: .5rem;
+    }
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(0,120,212,.4);
+    }
+    .btn-primary:hover { background: var(--blue-dk); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,.35);
+    }
+    .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--white);
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+      padding: 1.5rem 2rem;
+    }
+    .stats-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: .78rem;
+      color: var(--muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      margin-top: .2rem;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; }
+    section:nth-child(even) { background: var(--white); }
+
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-label {
+      display: inline-block;
+      background: rgba(0,120,212,.1);
+      color: var(--blue);
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: .3rem .8rem;
+      border-radius: 20px;
+      margin-bottom: .75rem;
+    }
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+    .section-divider {
+      width: 48px; height: 4px;
+      background: linear-gradient(90deg, var(--blue), var(--teal));
+      border-radius: 2px;
+      margin: .75rem auto 0;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .skill-card {
+      background: var(--light);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.25rem 1rem;
+      transition: all .25s;
+    }
+    .skill-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,120,212,.12);
+    }
+    .skill-icon { font-size: 1.8rem; margin-bottom: .5rem; }
+    .skill-name {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .skill-sub {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: .15rem;
+    }
+
+    /* ── EXPERIENCE TIMELINE ── */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px; top: 6px; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue), var(--teal));
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 58px;
+      margin-bottom: 2.5rem;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: 12px; top: 4px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--blue);
+    }
+    .timeline-card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      transition: all .25s;
+    }
+    .timeline-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 6px 20px rgba(0,120,212,.1);
+    }
+    .company {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: .2rem;
+    }
+    .role {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .period {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-top: .2rem;
+    }
+    .sub-roles { margin-top: .75rem; }
+    .sub-role {
+      border-top: 1px solid var(--border);
+      padding-top: .6rem;
+      margin-top: .6rem;
+    }
+    .sub-role .role { font-size: .88rem; }
+    .sub-role .period { font-size: .75rem; }
+
+    /* ── CERTS ── */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .cert-card {
+      background: var(--light);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      gap: .9rem;
+      align-items: flex-start;
+      transition: all .25s;
+    }
+    .cert-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,180,216,.12);
+    }
+    .cert-badge {
+      width: 42px; height: 42px; flex-shrink: 0;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .cert-name {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .edu-card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border-top: 4px solid var(--blue);
+      transition: all .25s;
+    }
+    .edu-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,120,212,.1);
+    }
+    .edu-school {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .25rem;
+    }
+    .edu-degree {
+      font-size: .85rem;
+      color: var(--blue);
+      font-weight: 600;
+      margin-bottom: .2rem;
+    }
+    .edu-years {
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: linear-gradient(135deg, var(--navy) 0%, #0f2238 100%);
+    }
+    #contact .section-title { color: var(--white); }
+    #contact .section-label { background: rgba(0,180,216,.15); color: var(--teal); }
+    .contact-grid {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .contact-card {
+      background: rgba(255,255,255,.07);
+      border: 1.5px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      text-decoration: none;
+      transition: all .25s;
+      min-width: 200px;
+    }
+    .contact-card:hover {
+      background: rgba(0,120,212,.2);
+      border-color: var(--blue);
+      transform: translateY(-3px);
+    }
+    .contact-card .icon { font-size: 1.8rem; margin-bottom: .5rem; }
+    .contact-card .label {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,.5);
+      font-weight: 600;
+    }
+    .contact-card .value {
+      font-size: .9rem;
+      color: var(--white);
+      font-weight: 500;
+      margin-top: .2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d1b2a;
+      color: rgba(255,255,255,.4);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: .8rem;
+    }
+    footer span { color: var(--teal); }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width: 640px) {
+      .hero-inner { flex-direction: column; text-align: center; }
+      .hero-location { justify-content: center; }
+      .hero-btns { justify-content: center; }
+      .hero-summary { max-width: 100%; }
+      .avatar-wrap { width: 140px; height: 140px; }
+      .timeline::before { display: none; }
+      .timeline-item { padding-left: 0; }
+      .timeline-dot { display: none; }
+      nav .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">LP<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">Sobre</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experiência</a></li>
+    <li><a href="#certifications">Certificações</a></li>
+    <li><a href="#education">Formação</a></li>
+    <li><a href="#contact">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero" id="about">
+  <div class="hero-inner">
+    <div class="avatar-wrap">
+      <div class="avatar-inner">LP</div>
+    </div>
+    <div class="hero-text">
+      <span class="hero-tag">☁️ Cloud Solution Architect</span>
+      <h1 class="hero-name">Luciano Pereira</h1>
+      <p class="hero-title">Azure · Linux · IaC · DevOps · MCT</p>
+      <p class="hero-location">📍 Recife, Pernambuco, Brasil</p>
+      <p class="hero-summary">
+        Com mais de 20 anos de experiência em infraestrutura de TI e diversas certificações
+        Microsoft, atuo como Arquiteto de Soluções em Cloud, com foco em consultoria e pré-vendas.
+        Meu objetivo é viabilizar plataformas confiáveis e escaláveis, otimizar custos em cloud e
+        transformar a infraestrutura em um habilitador estratégico.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-primary">✉️ Entrar em Contato</a>
+        <a href="https://www.linkedin.com/in/lucianopereira" target="_blank" class="btn btn-outline">🔗 LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-number">20+</div>
+      <div class="stat-label">Anos de Experiência</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">5+</div>
+      <div class="stat-label">Certificações</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">6</div>
+      <div class="stat-label">Anos na Avanade</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">MCT</div>
+      <div class="stat-label">Microsoft Certified Trainer</div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Competências</span>
+      <h2 class="section-title">Principais Skills</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-name">Microsoft Azure</div>
+        <div class="skill-sub">Cloud Architecture & Services</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🐧</div>
+        <div class="skill-name">Linux</div>
+        <div class="skill-sub">Administration & Infrastructure</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-name">IaC</div>
+        <div class="skill-sub">Infrastructure as Code</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔄</div>
+        <div class="skill-name">DevOps</div>
+        <div class="skill-sub">CI/CD & Automation</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔐</div>
+        <div class="skill-name">Microsoft Entra ID</div>
+        <div class="skill-sub">Identity & Access Management</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📋</div>
+        <div class="skill-name">Gestão de Projetos</div>
+        <div class="skill-sub">Planning & Delivery</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🛡️</div>
+        <div class="skill-name">Cybersecurity</div>
+        <div class="skill-sub">Security & Compliance</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🏗️</div>
+        <div class="skill-name">Cloud Architecture</div>
+        <div class="skill-sub">Design & Pre-sales</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🗂️</div>
+        <div class="skill-name">Active Directory</div>
+        <div class="skill-sub">Directory Services & GPO</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Carreira</span>
+      <h2 class="section-title">Experiência Profissional</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="company">BHS</div>
+          <div class="role">Arquiteto de Soluções em Nuvem</div>
+          <div class="period">⏱ Setembro 2024 – Presente · Belo Horizonte, MG</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="company">Avanade</div>
+          <div class="role">6 anos e 2 meses · Recife, PE</div>
+          <div class="sub-roles">
+            <div class="sub-role">
+              <div class="role">DevOps Engineering</div>
+              <div class="period">⏱ Outubro 2023 – Setembro 2024 · 1 ano</div>
+            </div>
+            <div class="sub-role">
+              <div class="role">Cloud Infrastructure Engineer</div>
+              <div class="period">⏱ Março 2021 – Outubro 2023 · 2 anos e 8 meses</div>
+            </div>
+            <div class="sub-role">
+              <div class="role">Associate, Cloud Infrastructure Engineer</div>
+              <div class="period">⏱ Agosto 2018 – Março 2021 · 2 anos e 8 meses</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="company">CORPVS – Corpo de Vigilantes Particulares LTDA</div>
+          <div class="role">Analista de Suporte</div>
+          <div class="period">⏱ Julho 2014 – Junho 2018 · 4 anos</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="company">Fuctura Tecnologia</div>
+          <div class="role">1 ano e 5 meses</div>
+          <div class="sub-roles">
+            <div class="sub-role">
+              <div class="role">Analista de Suporte</div>
+              <div class="period">⏱ Outubro 2013 – Julho 2014 · 10 meses</div>
+            </div>
+            <div class="sub-role">
+              <div class="role">Instrutor Linux</div>
+              <div class="period">⏱ Junho 2013 – Julho 2014 · 1 ano e 2 meses</div>
+            </div>
+            <div class="sub-role">
+              <div class="role">Monitor</div>
+              <div class="period">⏱ Março 2013 – Junho 2013 · 4 meses</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="company">Autônomo</div>
+          <div class="role">Analista de Suporte</div>
+          <div class="period">⏱ Fevereiro 2004 – Fevereiro 2013 · 9 anos e 1 mês</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Credenciais</span>
+      <h2 class="section-title">Certificações</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-badge">🐧</div>
+        <div class="cert-name">LPIC 1 – Linux Professional Institute</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge">🎓</div>
+        <div class="cert-name">Novell CLA – Certified Linux Administrator</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge">🔒</div>
+        <div class="cert-name">LFC108: Cybersecurity Essentials</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge">🏢</div>
+        <div class="cert-name">Novell DCTS – Novell Data Center Technical Specialist</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge">🛡️</div>
+        <div class="cert-name">Microsoft Certified: Security, Compliance, and Identity Fundamentals</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Formação</span>
+      <h2 class="section-title">Educação Acadêmica</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-school">🎓 Universidade Estácio de Sá</div>
+        <div class="edu-degree">Especialização em Segurança de Redes de Computadores</div>
+        <div class="edu-years">📅 2014 – 2016</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-school">🎓 FACIR – Faculdade de Informática do Recife</div>
+        <div class="edu-degree">Tecnólogo em Sistemas de Informação</div>
+        <div class="edu-years">📅 2010 – 2012</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-school">🎓 Senac Brasil</div>
+        <div class="edu-degree">Técnico em Informática – Tecnologia da Informação</div>
+        <div class="edu-years">📅 2004 – 2005</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Contato</span>
+      <h2 class="section-title">Vamos Conversar?</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-grid">
+      <a href="mailto:lucianop27@gmail.com" class="contact-card">
+        <div class="icon">✉️</div>
+        <div class="label">E-mail</div>
+        <div class="value">lucianop27@gmail.com</div>
+      </a>
+      <a href="https://www.linkedin.com/in/lucianopereira" target="_blank" class="contact-card">
+        <div class="icon">🔗</div>
+        <div class="label">LinkedIn</div>
+        <div class="value">linkedin.com/in/lucianopereira</div>
+      </a>
+      <div class="contact-card">
+        <div class="icon">📍</div>
+        <div class="label">Localização</div>
+        <div class="value">Recife, Pernambuco, Brasil</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Luciano Pereira</span> · Cloud Solution Architect</p>
+</footer>
+
+</body>
+</html>
