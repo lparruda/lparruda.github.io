@@ -220,19 +220,19 @@
     .edu-skills { font-size: .75rem; color: var(--text-muted); line-height: 1.5; }
 
     /* ── CONTACT ── */
-    #contact { background: linear-gradient(135deg, #1a2a3a 0%, #0f2238 100%) !important; }
-    #contact .section-title { color: #ffffff !important; }
-    #contact .section-label { background: rgba(0,180,216,.15) !important; color: var(--teal) !important; }
+    #contact { background: var(--bg-alt) !important; border-top: 1px solid var(--border); }
+    #contact .section-title { color: var(--text) !important; }
+    #contact .section-label { background: rgba(0,120,212,.1) !important; color: var(--blue) !important; }
     .contact-grid { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; }
-    .contact-card { background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.12); border-radius: 12px; padding: 1.5rem 2rem; text-align: center; text-decoration: none; transition: all .25s; min-width: 200px; }
-    .contact-card:hover { background: rgba(0,120,212,.2); border-color: var(--blue); transform: translateY(-3px); }
+    .contact-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.5rem 2rem; text-align: center; text-decoration: none; transition: all .25s; min-width: 200px; }
+    .contact-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,120,212,.12); }
     .contact-card .icon { font-size: 1.8rem; margin-bottom: .5rem; }
-    .contact-card .label { font-size: .75rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,.5); font-weight: 600; }
-    .contact-card .value { font-size: .9rem; color: #ffffff; font-weight: 500; margin-top: .2rem; }
+    .contact-card .label { font-size: .75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 600; }
+    .contact-card .value { font-size: .9rem; color: var(--text); font-weight: 500; margin-top: .2rem; }
 
     /* ── FOOTER ── */
-    footer { background: #0d1b2a; color: rgba(255,255,255,.4); text-align: center; padding: 1.5rem; font-size: .8rem; }
-    footer span { color: var(--teal); }
+    footer { background: var(--bg); border-top: 1px solid var(--border); color: var(--text-muted); text-align: center; padding: 1.5rem; font-size: .8rem; transition: background .3s; }
+    footer span { color: var(--blue); }
 
     /* ── RESPONSIVE ── */
     @media(max-width: 768px) { .nav-center { display: none; } }
@@ -290,7 +290,6 @@
       </p>
       <div class="hero-btns">
         <a href="#contact" class="btn btn-primary" data-pt="✉️ Entrar em Contato" data-en="✉️ Get in Touch">✉️ Entrar em Contato</a>
-        <a href="https://www.linkedin.com/in/lucianopereira" target="_blank" class="btn btn-outline">🔗 LinkedIn</a>
       </div>
     </div>
   </div>
@@ -562,7 +561,7 @@
         <div class="label">E-mail</div>
         <div class="value">lpereira@outlook.com</div>
       </a>
-      <a href="https://www.linkedin.com/in/lucianopereira" target="_blank" class="contact-card">
+      <a href="https://www.linkedin.com/in/luciano-pereira/" target="_blank" class="contact-card">
         <div class="icon">🔗</div>
         <div class="label">LinkedIn</div>
         <div class="value">linkedin.com/in/lucianopereira</div>
