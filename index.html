@@ -13,95 +13,96 @@
       --blue:      #0078d4;
       --blue-dk:   #005a9e;
       --teal:      #00b4d8;
-      --navy:      #1a2a3a;
 
-      --bg:        #f0f4f8;
-      --bg-alt:    #ffffff;
-      --card:      #ffffff;
-      --text:      #1a2a3a;
-      --text-muted:#64748b;
-      --border:    #e2e8f0;
+      --bg:              #f0f4f8;
+      --bg-alt:          #ffffff;
+      --card:            #ffffff;
+      --text:            #1a2a3a;
+      --text-muted:      #64748b;
+      --border:          #e2e8f0;
+      --shadow:          rgba(0,0,0,0.08);
 
-      --nav-bg:    rgba(255,255,255,0.97);
-      --nav-text:  #1a2a3a;
-      --nav-link:  #475569;
+      --nav-bg:          rgba(255,255,255,0.97);
+      --nav-text:        #1a2a3a;
+      --nav-link:        #475569;
+      --nav-border:      #e2e8f0;
 
-      --hero-bg1:  #1a2a3a;
-      --hero-bg2:  #0f2238;
-      --hero-bg3:  #0d1b2a;
+      /* Hero - LIGHT */
+      --hero-bg:         linear-gradient(135deg, #dbeafe 0%, #e0f2fe 50%, #f0f9ff 100%);
+      --hero-radial:     rgba(0,120,212,.08);
+      --hero-name:       #1a2a3a;
+      --hero-title:      #0078d4;
+      --hero-location:   #64748b;
+      --hero-summary:    #334155;
+      --hero-tag-bg:     rgba(0,120,212,.1);
+      --hero-tag-border: rgba(0,120,212,.3);
+      --hero-tag-color:  #0078d4;
+      --hero-btn-ol-c:   #1a2a3a;
+      --hero-btn-ol-b:   rgba(26,42,58,.3);
+      --hero-avatar-bg:  linear-gradient(135deg, #bfdbfe, #93c5fd);
+      --hero-avatar-txt: #1e40af;
 
-      --stats-bg:  #ffffff;
-      --shadow:    rgba(0,0,0,0.08);
+      --stats-bg:        #ffffff;
+      --tag-bg:          rgba(0,120,212,.07);
     }
 
     /* ── DARK THEME ── */
     body.dark {
-      --bg:        #0d1b2a;
-      --bg-alt:    #0f2238;
-      --card:      #162235;
-      --text:      #e2e8f0;
-      --text-muted:#94a3b8;
-      --border:    #1e3a52;
+      --bg:              #0d1b2a;
+      --bg-alt:          #0f2238;
+      --card:            #162235;
+      --text:            #e2e8f0;
+      --text-muted:      #94a3b8;
+      --border:          #1e3a52;
+      --shadow:          rgba(0,0,0,0.3);
 
-      --nav-bg:    rgba(13,27,42,0.97);
-      --nav-text:  #e2e8f0;
-      --nav-link:  #94a3b8;
+      --nav-bg:          rgba(13,27,42,0.97);
+      --nav-text:        #e2e8f0;
+      --nav-link:        #94a3b8;
+      --nav-border:      #1e3a52;
 
-      --stats-bg:  #0f2238;
-      --shadow:    rgba(0,0,0,0.3);
+      /* Hero - DARK */
+      --hero-bg:         linear-gradient(135deg, #1a2a3a 0%, #0f2238 60%, #0d1b2a 100%);
+      --hero-radial:     rgba(0,180,216,.15);
+      --hero-name:       #ffffff;
+      --hero-title:      #00b4d8;
+      --hero-location:   rgba(255,255,255,.55);
+      --hero-summary:    rgba(255,255,255,.8);
+      --hero-tag-bg:     rgba(0,180,216,.15);
+      --hero-tag-border: rgba(0,180,216,.4);
+      --hero-tag-color:  #00b4d8;
+      --hero-btn-ol-c:   #ffffff;
+      --hero-btn-ol-b:   rgba(255,255,255,.35);
+      --hero-avatar-bg:  linear-gradient(135deg, #2c4a6e, #1a3a5c);
+      --hero-avatar-txt: #00b4d8;
+
+      --stats-bg:        #0f2238;
+      --tag-bg:          rgba(0,180,216,.1);
     }
 
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: background .3s, color .3s;
-    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background .3s, color .3s; }
 
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: var(--nav-bg);
-      backdrop-filter: blur(10px);
-      padding: 0 1.5rem;
-      height: 60px;
+      background: var(--nav-bg); backdrop-filter: blur(10px);
+      padding: 0 1.5rem; height: 60px;
       display: flex; align-items: center; justify-content: space-between;
       box-shadow: 0 2px 16px var(--shadow);
-      transition: background .3s, box-shadow .3s;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--nav-border);
+      transition: background .3s, border-color .3s;
     }
-    .nav-brand {
-      color: var(--nav-text);
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: .5px;
-      transition: color .3s;
-    }
+    .nav-brand { color: var(--nav-text); font-weight: 800; font-size: 1.15rem; transition: color .3s; }
     .nav-brand span { color: var(--blue); }
     .nav-center { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-center a {
-      color: var(--nav-link);
-      text-decoration: none;
-      font-size: .85rem;
-      font-weight: 500;
-      transition: color .2s;
-    }
+    .nav-center a { color: var(--nav-link); text-decoration: none; font-size: .85rem; font-weight: 500; transition: color .2s; }
     .nav-center a:hover { color: var(--blue); }
     .nav-controls { display: flex; gap: .5rem; align-items: center; }
     .nav-btn {
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      color: var(--text);
-      border-radius: 8px;
-      padding: .35rem .7rem;
-      font-size: .78rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all .2s;
-      letter-spacing: .5px;
+      background: var(--bg); border: 1.5px solid var(--border); color: var(--text);
+      border-radius: 8px; padding: .35rem .7rem; font-size: .78rem; font-weight: 700;
+      cursor: pointer; transition: all .2s; letter-spacing: .5px;
       display: flex; align-items: center; gap: .3rem;
     }
     .nav-btn:hover { border-color: var(--blue); color: var(--blue); }
@@ -109,125 +110,68 @@
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
-      background: linear-gradient(135deg, var(--hero-bg1) 0%, var(--hero-bg2) 60%, var(--hero-bg3) 100%);
+      background: var(--hero-bg);
       display: flex; align-items: center; justify-content: center;
       padding: 100px 2rem 60px;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
+      transition: background .3s;
     }
     #hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 70% 50%, rgba(0,180,216,.15) 0%, transparent 60%);
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, var(--hero-radial) 0%, transparent 60%);
     }
-    .hero-inner {
-      position: relative;
-      max-width: 900px; width: 100%;
-      display: flex; align-items: center; gap: 3.5rem;
-    }
+    .hero-inner { position: relative; max-width: 900px; width: 100%; display: flex; align-items: center; gap: 3.5rem; }
     .avatar-wrap {
-      flex-shrink: 0;
-      width: 190px; height: 190px;
-      border-radius: 50%;
+      flex-shrink: 0; width: 190px; height: 190px; border-radius: 50%;
       background: linear-gradient(135deg, var(--blue), var(--teal));
-      padding: 4px;
-      box-shadow: 0 0 50px rgba(0,180,216,.5);
+      padding: 4px; box-shadow: 0 0 50px rgba(0,120,212,.3); transition: box-shadow .3s;
     }
+    body.dark .avatar-wrap { box-shadow: 0 0 50px rgba(0,180,216,.5); }
     .avatar-inner {
-      width: 100%; height: 100%;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #2c4a6e, #1a3a5c);
+      width: 100%; height: 100%; border-radius: 50%;
+      background: var(--hero-avatar-bg);
       display: flex; align-items: center; justify-content: center;
-      font-size: 3.5rem; font-weight: 800;
-      color: var(--teal); letter-spacing: -2px;
-      overflow: hidden;
+      font-size: 3.5rem; font-weight: 800; color: var(--hero-avatar-txt);
+      letter-spacing: -2px; overflow: hidden; transition: background .3s, color .3s;
     }
-    .avatar-inner img {
-      width: 100%; height: 100%;
-      object-fit: cover; border-radius: 50%;
-    }
+    .avatar-inner img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
     .hero-text { flex: 1; }
     .hero-tag {
-      display: inline-block;
-      background: rgba(0,180,216,.15);
-      border: 1px solid rgba(0,180,216,.4);
-      color: var(--teal);
-      font-size: .75rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 1.5px;
-      padding: .3rem .8rem; border-radius: 20px; margin-bottom: 1rem;
+      display: inline-block; background: var(--hero-tag-bg); border: 1px solid var(--hero-tag-border);
+      color: var(--hero-tag-color); font-size: .75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1.5px; padding: .3rem .8rem;
+      border-radius: 20px; margin-bottom: 1rem; transition: all .3s;
     }
-    .hero-name {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 800; color: #ffffff; line-height: 1.1; margin-bottom: .5rem;
-    }
-    .hero-title { font-size: 1rem; color: var(--teal); font-weight: 500; margin-bottom: .6rem; }
-    .hero-location {
-      font-size: .85rem; color: rgba(255,255,255,.55);
-      margin-bottom: 1.5rem; display: flex; align-items: center; gap: .4rem;
-    }
-    .hero-summary {
-      font-size: .95rem; color: rgba(255,255,255,.8);
-      line-height: 1.8; margin-bottom: 2rem; max-width: 520px;
-    }
+    .hero-name { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: var(--hero-name); line-height: 1.1; margin-bottom: .5rem; transition: color .3s; }
+    .hero-title { font-size: 1rem; color: var(--hero-title); font-weight: 600; margin-bottom: .6rem; transition: color .3s; }
+    .hero-location { font-size: .85rem; color: var(--hero-location); margin-bottom: 1.5rem; display: flex; align-items: center; gap: .4rem; transition: color .3s; }
+    .hero-summary { font-size: .95rem; color: var(--hero-summary); line-height: 1.8; margin-bottom: 2rem; max-width: 520px; transition: color .3s; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn {
-      padding: .65rem 1.5rem; border-radius: 8px;
-      font-size: .88rem; font-weight: 600; text-decoration: none;
-      transition: all .2s; display: inline-flex; align-items: center; gap: .5rem; cursor: pointer; border: none;
-    }
-    .btn-primary {
-      background: var(--blue); color: #fff;
-      box-shadow: 0 4px 14px rgba(0,120,212,.4);
-    }
+    .btn { padding: .65rem 1.5rem; border-radius: 8px; font-size: .88rem; font-weight: 600; text-decoration: none; transition: all .2s; display: inline-flex; align-items: center; gap: .5rem; cursor: pointer; border: none; }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 4px 14px rgba(0,120,212,.4); }
     .btn-primary:hover { background: var(--blue-dk); transform: translateY(-1px); }
-    .btn-outline {
-      background: transparent; color: #fff;
-      border: 1.5px solid rgba(255,255,255,.35);
-    }
-    .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+    .btn-outline { background: transparent; color: var(--hero-btn-ol-c); border: 1.5px solid var(--hero-btn-ol-b); transition: all .3s; }
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
 
     /* ── STATS ── */
-    .stats-bar {
-      background: var(--stats-bg);
-      box-shadow: 0 4px 20px var(--shadow);
-      padding: 1.5rem 2rem;
-      transition: background .3s;
-      border-bottom: 1px solid var(--border);
-    }
-    .stats-inner {
-      max-width: 900px; margin: 0 auto;
-      display: flex; justify-content: space-around; gap: 1rem; flex-wrap: wrap;
-    }
+    .stats-bar { background: var(--stats-bg); box-shadow: 0 4px 20px var(--shadow); padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); transition: background .3s; }
+    .stats-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-around; gap: 1rem; flex-wrap: wrap; }
     .stat { text-align: center; }
     .stat-number { font-size: 1.8rem; font-weight: 800; color: var(--blue); line-height: 1; }
-    .stat-label {
-      font-size: .78rem; color: var(--text-muted); font-weight: 500;
-      text-transform: uppercase; letter-spacing: .8px; margin-top: .2rem;
-    }
+    .stat-label { font-size: .78rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: .8px; margin-top: .2rem; }
 
     /* ── SECTIONS ── */
     section { padding: 5rem 2rem; background: var(--bg); transition: background .3s; }
     section:nth-child(even) { background: var(--bg-alt); }
     .section-inner { max-width: 900px; margin: 0 auto; }
     .section-header { text-align: center; margin-bottom: 3rem; }
-    .section-label {
-      display: inline-block; background: rgba(0,120,212,.1); color: var(--blue);
-      font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
-      padding: .3rem .8rem; border-radius: 20px; margin-bottom: .75rem;
-    }
+    .section-label { display: inline-block; background: rgba(0,120,212,.1); color: var(--blue); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: .3rem .8rem; border-radius: 20px; margin-bottom: .75rem; }
     .section-title { font-size: 1.9rem; font-weight: 800; color: var(--text); transition: color .3s; }
-    .section-divider {
-      width: 48px; height: 4px;
-      background: linear-gradient(90deg, var(--blue), var(--teal));
-      border-radius: 2px; margin: .75rem auto 0;
-    }
+    .section-divider { width: 48px; height: 4px; background: linear-gradient(90deg, var(--blue), var(--teal)); border-radius: 2px; margin: .75rem auto 0; }
 
     /* ── SKILLS ── */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
-    .skill-card {
-      background: var(--card); border: 1.5px solid var(--border); border-radius: 12px;
-      padding: 1.25rem 1.25rem 1rem; transition: all .25s;
-    }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1rem; }
+    .skill-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.25rem 1.25rem 1rem; transition: all .25s; }
     .skill-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,120,212,.12); }
     .skill-icon { font-size: 1.8rem; margin-bottom: .5rem; }
     .skill-name { font-size: .9rem; font-weight: 700; color: var(--text); transition: color .3s; }
@@ -235,68 +179,50 @@
 
     /* ── TIMELINE ── */
     .timeline { position: relative; }
-    .timeline::before {
-      content: ''; position: absolute;
-      left: 20px; top: 6px; bottom: 0; width: 2px;
-      background: linear-gradient(to bottom, var(--blue), var(--teal));
-    }
+    .timeline::before { content: ''; position: absolute; left: 20px; top: 6px; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--blue), var(--teal)); }
     .timeline-item { position: relative; padding-left: 58px; margin-bottom: 2.5rem; }
-    .timeline-dot {
-      position: absolute; left: 12px; top: 4px;
-      width: 18px; height: 18px; border-radius: 50%;
-      background: var(--blue); border: 3px solid var(--bg-alt);
-      box-shadow: 0 0 0 2px var(--blue); transition: border-color .3s;
-    }
-    .timeline-card {
-      background: var(--card); border: 1.5px solid var(--border);
-      border-radius: 12px; padding: 1.25rem 1.5rem; transition: all .25s;
-    }
+    .timeline-dot { position: absolute; left: 12px; top: 4px; width: 18px; height: 18px; border-radius: 50%; background: var(--blue); border: 3px solid var(--bg-alt); box-shadow: 0 0 0 2px var(--blue); transition: border-color .3s; }
+    .timeline-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; transition: all .25s; }
     .timeline-card:hover { border-color: var(--blue); box-shadow: 0 6px 20px rgba(0,120,212,.1); }
     .company { font-size: 1rem; font-weight: 700; color: var(--blue); margin-bottom: .2rem; }
     .role { font-size: .95rem; font-weight: 600; color: var(--text); transition: color .3s; }
-    .period { font-size: .78rem; color: var(--text-muted); margin-top: .2rem; }
+    .period { font-size: .78rem; color: var(--text-muted); margin-top: .15rem; }
     .sub-roles { margin-top: .75rem; }
-    .sub-role { border-top: 1px solid var(--border); padding-top: .6rem; margin-top: .6rem; }
+    .sub-role { border-top: 1px solid var(--border); padding-top: .75rem; margin-top: .75rem; }
     .sub-role .role { font-size: .88rem; }
     .sub-role .period { font-size: .75rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .6rem; }
+    .skill-tag { background: var(--tag-bg); color: var(--blue); border: 1px solid rgba(0,120,212,.2); font-size: .7rem; font-weight: 600; padding: .2rem .55rem; border-radius: 20px; }
 
     /* ── CERTS ── */
-    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
-    .cert-card {
-      background: var(--card); border: 1.5px solid var(--border); border-radius: 12px;
-      padding: 1.1rem 1.25rem; display: flex; gap: .9rem; align-items: flex-start; transition: all .25s;
-    }
+    .certs-filter { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-bottom: 2rem; }
+    .filter-btn { background: var(--card); border: 1.5px solid var(--border); color: var(--text-muted); border-radius: 20px; padding: .35rem .9rem; font-size: .78rem; font-weight: 600; cursor: pointer; transition: all .2s; }
+    .filter-btn:hover, .filter-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .cert-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; display: flex; gap: .9rem; align-items: flex-start; transition: all .25s; }
     .cert-card:hover { border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,180,216,.12); }
-    .cert-badge {
-      width: 42px; height: 42px; flex-shrink: 0; border-radius: 10px;
-      background: linear-gradient(135deg, var(--blue), var(--teal));
-      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
-    }
-    .cert-name { font-size: .85rem; font-weight: 600; color: var(--text); line-height: 1.3; transition: color .3s; }
+    .cert-card.hidden { display: none; }
+    .cert-badge { width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px; background: linear-gradient(135deg, var(--blue), var(--teal)); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+    .cert-info { flex: 1; min-width: 0; }
+    .cert-name { font-size: .83rem; font-weight: 700; color: var(--text); line-height: 1.3; transition: color .3s; }
+    .cert-issuer { font-size: .75rem; color: var(--blue); font-weight: 600; margin-top: .2rem; }
+    .cert-date { font-size: .72rem; color: var(--text-muted); margin-top: .15rem; }
 
     /* ── EDUCATION ── */
     .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
-    .edu-card {
-      background: var(--card); border: 1.5px solid var(--border); border-radius: 12px;
-      padding: 1.5rem; border-top: 4px solid var(--blue); transition: all .25s;
-    }
+    .edu-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.5rem; border-top: 4px solid var(--blue); transition: all .25s; }
     .edu-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,120,212,.1); }
     .edu-school { font-size: .95rem; font-weight: 700; color: var(--text); margin-bottom: .25rem; transition: color .3s; }
     .edu-degree { font-size: .85rem; color: var(--blue); font-weight: 600; margin-bottom: .2rem; }
-    .edu-years { font-size: .78rem; color: var(--text-muted); }
+    .edu-years { font-size: .78rem; color: var(--text-muted); margin-bottom: .5rem; }
+    .edu-skills { font-size: .75rem; color: var(--text-muted); line-height: 1.5; }
 
     /* ── CONTACT ── */
-    #contact {
-      background: linear-gradient(135deg, #1a2a3a 0%, #0f2238 100%) !important;
-    }
+    #contact { background: linear-gradient(135deg, #1a2a3a 0%, #0f2238 100%) !important; }
     #contact .section-title { color: #ffffff !important; }
     #contact .section-label { background: rgba(0,180,216,.15) !important; color: var(--teal) !important; }
     .contact-grid { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; }
-    .contact-card {
-      background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.12);
-      border-radius: 12px; padding: 1.5rem 2rem; text-align: center;
-      text-decoration: none; transition: all .25s; min-width: 200px;
-    }
+    .contact-card { background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.12); border-radius: 12px; padding: 1.5rem 2rem; text-align: center; text-decoration: none; transition: all .25s; min-width: 200px; }
     .contact-card:hover { background: rgba(0,120,212,.2); border-color: var(--blue); transform: translateY(-3px); }
     .contact-card .icon { font-size: 1.8rem; margin-bottom: .5rem; }
     .contact-card .label { font-size: .75rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,.5); font-weight: 600; }
@@ -307,9 +233,7 @@
     footer span { color: var(--teal); }
 
     /* ── RESPONSIVE ── */
-    @media(max-width: 768px) {
-      .nav-center { display: none; }
-    }
+    @media(max-width: 768px) { .nav-center { display: none; } }
     @media(max-width: 640px) {
       .hero-inner { flex-direction: column; text-align: center; }
       .hero-location { justify-content: center; }
@@ -336,10 +260,10 @@
     <li><a href="#contact"        data-pt="Contato"       data-en="Contact">Contato</a></li>
   </ul>
   <div class="nav-controls">
-    <button class="nav-btn" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">
-      <span id="themeIcon">🌙</span> <span id="themeLabel">Dark</span>
+    <button class="nav-btn" onclick="toggleTheme()">
+      <span id="themeIcon">🌙</span><span id="themeLabel">Dark</span>
     </button>
-    <button class="nav-btn" id="langToggle" onclick="toggleLang()" title="Switch language">
+    <button class="nav-btn" onclick="toggleLang()">
       🌐 <span id="langLabel">EN</span>
     </button>
   </div>
@@ -349,10 +273,7 @@
 <section id="hero">
   <div class="hero-inner">
     <div class="avatar-wrap">
-      <div class="avatar-inner">
-        <!-- PHOTO: replace the text below with <img src="photo.jpg" alt="Luciano Pereira"> -->
-        LP
-      </div>
+      <div class="avatar-inner">LP</div>
     </div>
     <div class="hero-text">
       <span class="hero-tag" data-pt="☁️ Arquiteto de Soluções Cloud" data-en="☁️ Cloud Solution Architect">☁️ Arquiteto de Soluções Cloud</span>
@@ -361,7 +282,7 @@
       <p class="hero-location">📍 <span data-pt="Recife, Pernambuco, Brasil" data-en="Recife, Pernambuco, Brazil">Recife, Pernambuco, Brasil</span></p>
       <p class="hero-summary"
         data-pt="Com mais de 20 anos de experiência em infraestrutura de TI e diversas certificações Microsoft, atuo como Arquiteto de Soluções em Cloud, com foco em consultoria e pré-vendas. Meu objetivo é viabilizar plataformas confiáveis e escaláveis, otimizar custos em cloud e transformar a infraestrutura em um habilitador estratégico."
-        data-en="With over 20 years of experience in IT infrastructure and multiple Microsoft certifications, I work as a Cloud Solution Architect, focused on consulting and pre-sales. My goal is to enable reliable and scalable platforms, optimize cloud costs, and transform infrastructure into a strategic business enabler.">
+        data-en="With over 20 years of experience in IT infrastructure and multiple Microsoft certifications, I work as a Cloud Solution Architect focused on consulting and pre-sales. My goal is to enable reliable and scalable platforms, optimize cloud costs, and transform infrastructure into a strategic business enabler.">
         Com mais de 20 anos de experiência em infraestrutura de TI e diversas certificações Microsoft, atuo como Arquiteto de Soluções em Cloud, com foco em consultoria e pré-vendas. Meu objetivo é viabilizar plataformas confiáveis e escaláveis, otimizar custos em cloud e transformar a infraestrutura em um habilitador estratégico.
       </p>
       <div class="hero-btns">
@@ -375,22 +296,10 @@
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stats-inner">
-    <div class="stat">
-      <div class="stat-number">20+</div>
-      <div class="stat-label" data-pt="Anos de Experiência" data-en="Years of Experience">Anos de Experiência</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">5+</div>
-      <div class="stat-label" data-pt="Certificações" data-en="Certifications">Certificações</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">6</div>
-      <div class="stat-label" data-pt="Anos na Avanade" data-en="Years at Avanade">Anos na Avanade</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">MCT</div>
-      <div class="stat-label" data-pt="Microsoft Certified Trainer" data-en="Microsoft Certified Trainer">Microsoft Certified Trainer</div>
-    </div>
+    <div class="stat"><div class="stat-number">20+</div><div class="stat-label" data-pt="Anos de Experiência" data-en="Years of Experience">Anos de Experiência</div></div>
+    <div class="stat"><div class="stat-number">25+</div><div class="stat-label" data-pt="Certificações" data-en="Certifications">Certificações</div></div>
+    <div class="stat"><div class="stat-number">6</div><div class="stat-label" data-pt="Anos na Avanade" data-en="Years at Avanade">Anos na Avanade</div></div>
+    <div class="stat"><div class="stat-number">MCT</div><div class="stat-label" data-pt="Microsoft Certified Trainer" data-en="Microsoft Certified Trainer">Microsoft Certified Trainer</div></div>
   </div>
 </div>
 
@@ -409,15 +318,10 @@
       <div class="skill-card"><div class="skill-icon">🔄</div><div class="skill-name">DevOps</div><div class="skill-sub">CI/CD & Automation</div></div>
       <div class="skill-card"><div class="skill-icon">🔐</div><div class="skill-name">Microsoft Entra ID</div><div class="skill-sub">Identity & Access Management</div></div>
       <div class="skill-card"><div class="skill-icon">🗂️</div><div class="skill-name">Active Directory</div><div class="skill-sub">Directory Services & GPO</div></div>
-      <div class="skill-card"><div class="skill-icon">📋</div>
-        <div class="skill-name" data-pt="Gestão de Projetos" data-en="Project Management">Gestão de Projetos</div>
-        <div class="skill-sub">Planning & Delivery</div>
-      </div>
+      <div class="skill-card"><div class="skill-icon">📋</div><div class="skill-name" data-pt="Gestão de Projetos" data-en="Project Management">Gestão de Projetos</div><div class="skill-sub">Planning & Delivery</div></div>
       <div class="skill-card"><div class="skill-icon">🛡️</div><div class="skill-name">Cybersecurity</div><div class="skill-sub">Security & Compliance</div></div>
-      <div class="skill-card"><div class="skill-icon">🏗️</div>
-        <div class="skill-name" data-pt="Arquitetura Cloud" data-en="Cloud Architecture">Arquitetura Cloud</div>
-        <div class="skill-sub">Design & Pre-sales</div>
-      </div>
+      <div class="skill-card"><div class="skill-icon">🏗️</div><div class="skill-name" data-pt="Arquitetura Cloud" data-en="Cloud Architecture">Arquitetura Cloud</div><div class="skill-sub">Design & Pre-sales</div></div>
+      <div class="skill-card"><div class="skill-icon">☁️</div><div class="skill-name">AWS</div><div class="skill-sub">Solutions Architect</div></div>
     </div>
   </div>
 </section>
@@ -436,8 +340,16 @@
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="company">BHS</div>
-          <div class="role" data-pt="Arquiteto de Soluções em Nuvem" data-en="Cloud Solution Architect">Arquiteto de Soluções em Nuvem</div>
-          <div class="period" data-pt="⏱ Setembro 2024 – Presente · Belo Horizonte, MG" data-en="⏱ September 2024 – Present · Belo Horizonte, MG">⏱ Setembro 2024 – Presente · Belo Horizonte, MG</div>
+          <div class="role" data-pt="Arquiteto de Soluções em Nuvem · Tempo Integral" data-en="Cloud Solution Architect · Full-time">Arquiteto de Soluções em Nuvem · Tempo Integral</div>
+          <div class="period" data-pt="⏱ set de 2024 – Presente · 1 ano 8 meses · Belo Horizonte, MG" data-en="⏱ Sep 2024 – Present · 1 year 8 months · Belo Horizonte, MG">⏱ set de 2024 – Presente · 1 ano 8 meses · Belo Horizonte, MG</div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-pt="Pré-vendas" data-en="Pre-sales">Pré-vendas</span>
+            <span class="skill-tag" data-pt="Gestão de Projetos" data-en="Project Management">Gestão de Projetos</span>
+            <span class="skill-tag">Microsoft Azure</span>
+            <span class="skill-tag" data-pt="Arquitetura Cloud" data-en="Cloud Architecture">Arquitetura Cloud</span>
+            <span class="skill-tag">IaC</span>
+            <span class="skill-tag">DevOps</span>
+          </div>
         </div>
       </div>
 
@@ -445,19 +357,38 @@
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="company">Avanade</div>
-          <div class="role" data-pt="6 anos e 2 meses · Recife, PE" data-en="6 years 2 months · Recife, PE">6 anos e 2 meses · Recife, PE</div>
+          <div class="role" data-pt="6 anos 2 meses · Recife, PE" data-en="6 years 2 months · Recife, PE">6 anos 2 meses · Recife, PE</div>
           <div class="sub-roles">
             <div class="sub-role">
-              <div class="role">DevOps Engineering</div>
-              <div class="period" data-pt="⏱ Outubro 2023 – Setembro 2024 · 1 ano" data-en="⏱ October 2023 – September 2024 · 1 year">⏱ Outubro 2023 – Setembro 2024 · 1 ano</div>
+              <div class="role">DevOps Engineering · <span style="font-weight:400;font-size:.85em" data-pt="Tempo Integral" data-en="Full-time">Tempo Integral</span></div>
+              <div class="period" data-pt="⏱ out de 2023 – set de 2024 · 1 ano" data-en="⏱ Oct 2023 – Sep 2024 · 1 year">⏱ out de 2023 – set de 2024 · 1 ano</div>
+              <div class="skill-tags">
+                <span class="skill-tag">Ansible</span>
+                <span class="skill-tag" data-pt="Administração de Redes" data-en="Network Administration">Administração de Redes</span>
+                <span class="skill-tag">Terraform</span>
+                <span class="skill-tag">CI/CD</span>
+                <span class="skill-tag">Azure DevOps</span>
+              </div>
             </div>
             <div class="sub-role">
-              <div class="role">Cloud Infrastructure Engineer</div>
-              <div class="period" data-pt="⏱ Março 2021 – Outubro 2023 · 2 anos e 8 meses" data-en="⏱ March 2021 – October 2023 · 2 years 8 months">⏱ Março 2021 – Outubro 2023 · 2 anos e 8 meses</div>
+              <div class="role">Cloud Infrastructure Engineer · <span style="font-weight:400;font-size:.85em" data-pt="Tempo Integral" data-en="Full-time">Tempo Integral</span></div>
+              <div class="period" data-pt="⏱ mar de 2021 – out de 2023 · 2 anos 8 meses" data-en="⏱ Mar 2021 – Oct 2023 · 2 years 8 months">⏱ mar de 2021 – out de 2023 · 2 anos 8 meses</div>
+              <div class="skill-tags">
+                <span class="skill-tag">Ansible</span>
+                <span class="skill-tag">Microsoft Windows</span>
+                <span class="skill-tag">Microsoft Azure</span>
+                <span class="skill-tag">Linux</span>
+                <span class="skill-tag">Terraform</span>
+              </div>
             </div>
             <div class="sub-role">
               <div class="role">Associate, Cloud Infrastructure Engineer</div>
-              <div class="period" data-pt="⏱ Agosto 2018 – Março 2021 · 2 anos e 8 meses" data-en="⏱ August 2018 – March 2021 · 2 years 8 months">⏱ Agosto 2018 – Março 2021 · 2 anos e 8 meses</div>
+              <div class="period" data-pt="⏱ ago de 2018 – mar de 2021 · 2 anos 8 meses" data-en="⏱ Aug 2018 – Mar 2021 · 2 years 8 months">⏱ ago de 2018 – mar de 2021 · 2 anos 8 meses</div>
+              <div class="skill-tags">
+                <span class="skill-tag" data-pt="Administração de Redes" data-en="Network Administration">Administração de Redes</span>
+                <span class="skill-tag">Microsoft Azure</span>
+                <span class="skill-tag">Active Directory</span>
+              </div>
             </div>
           </div>
         </div>
@@ -468,7 +399,12 @@
         <div class="timeline-card">
           <div class="company">CORPVS – Corpo de Vigilantes Particulares LTDA</div>
           <div class="role" data-pt="Analista de Suporte" data-en="Support Analyst">Analista de Suporte</div>
-          <div class="period" data-pt="⏱ Julho 2014 – Junho 2018 · 4 anos" data-en="⏱ July 2014 – June 2018 · 4 years">⏱ Julho 2014 – Junho 2018 · 4 anos</div>
+          <div class="period" data-pt="⏱ jul de 2014 – jun de 2018 · 4 anos" data-en="⏱ Jul 2014 – Jun 2018 · 4 years">⏱ jul de 2014 – jun de 2018 · 4 anos</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Microsoft Windows</span>
+            <span class="skill-tag" data-pt="Segurança" data-en="Security">Segurança</span>
+            <span class="skill-tag" data-pt="Suporte Técnico" data-en="Technical Support">Suporte Técnico</span>
+          </div>
         </div>
       </div>
 
@@ -476,19 +412,29 @@
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="company">Fuctura Tecnologia</div>
-          <div class="role" data-pt="1 ano e 5 meses" data-en="1 year 5 months">1 ano e 5 meses</div>
+          <div class="role" data-pt="1 ano 5 meses" data-en="1 year 5 months">1 ano 5 meses</div>
           <div class="sub-roles">
             <div class="sub-role">
               <div class="role" data-pt="Analista de Suporte" data-en="Support Analyst">Analista de Suporte</div>
-              <div class="period" data-pt="⏱ Outubro 2013 – Julho 2014 · 10 meses" data-en="⏱ October 2013 – July 2014 · 10 months">⏱ Outubro 2013 – Julho 2014 · 10 meses</div>
+              <div class="period" data-pt="⏱ out de 2013 – jul de 2014 · 10 meses" data-en="⏱ Oct 2013 – Jul 2014 · 10 months">⏱ out de 2013 – jul de 2014 · 10 meses</div>
+              <div class="skill-tags">
+                <span class="skill-tag" data-pt="Solução de Problemas" data-en="Troubleshooting">Solução de Problemas</span>
+                <span class="skill-tag">Linux</span>
+              </div>
             </div>
             <div class="sub-role">
               <div class="role" data-pt="Instrutor Linux" data-en="Linux Instructor">Instrutor Linux</div>
-              <div class="period" data-pt="⏱ Junho 2013 – Julho 2014 · 1 ano e 2 meses" data-en="⏱ June 2013 – July 2014 · 1 year 2 months">⏱ Junho 2013 – Julho 2014 · 1 ano e 2 meses</div>
+              <div class="period" data-pt="⏱ jun de 2013 – jul de 2014 · 1 ano 2 meses" data-en="⏱ Jun 2013 – Jul 2014 · 1 year 2 months">⏱ jun de 2013 – jul de 2014 · 1 ano 2 meses</div>
+              <div class="skill-tags">
+                <span class="skill-tag" data-pt="Treinamento" data-en="Training">Treinamento</span>
+                <span class="skill-tag" data-pt="Segurança da Informação" data-en="Information Security">Segurança da Informação</span>
+                <span class="skill-tag">Linux</span>
+              </div>
             </div>
             <div class="sub-role">
               <div class="role" data-pt="Monitor" data-en="Teaching Assistant">Monitor</div>
-              <div class="period" data-pt="⏱ Março 2013 – Junho 2013 · 4 meses" data-en="⏱ March 2013 – June 2013 · 4 months">⏱ Março 2013 – Junho 2013 · 4 meses</div>
+              <div class="period" data-pt="⏱ mar de 2013 – jun de 2013 · 4 meses" data-en="⏱ Mar 2013 – Jun 2013 · 4 months">⏱ mar de 2013 – jun de 2013 · 4 meses</div>
+              <div class="skill-tags"><span class="skill-tag">Linux</span></div>
             </div>
           </div>
         </div>
@@ -499,7 +445,11 @@
         <div class="timeline-card">
           <div class="company" data-pt="Autônomo" data-en="Freelancer">Autônomo</div>
           <div class="role" data-pt="Analista de Suporte" data-en="Support Analyst">Analista de Suporte</div>
-          <div class="period" data-pt="⏱ Fevereiro 2004 – Fevereiro 2013 · 9 anos e 1 mês" data-en="⏱ February 2004 – February 2013 · 9 years 1 month">⏱ Fevereiro 2004 – Fevereiro 2013 · 9 anos e 1 mês</div>
+          <div class="period" data-pt="⏱ fev de 2004 – fev de 2013 · 9 anos 1 mês" data-en="⏱ Feb 2004 – Feb 2013 · 9 years 1 month">⏱ fev de 2004 – fev de 2013 · 9 anos 1 mês</div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-pt="Experiência do Cliente" data-en="Customer Experience">Experiência do Cliente</span>
+            <span class="skill-tag" data-pt="Solução de Problemas" data-en="Troubleshooting">Solução de Problemas</span>
+          </div>
         </div>
       </div>
 
@@ -512,15 +462,56 @@
   <div class="section-inner">
     <div class="section-header">
       <span class="section-label" data-pt="Credenciais" data-en="Credentials">Credenciais</span>
-      <h2 class="section-title" data-pt="Certificações" data-en="Certifications">Certificações</h2>
+      <h2 class="section-title" data-pt="Certificações & Licenças" data-en="Certifications & Licenses">Certificações &amp; Licenças</h2>
       <div class="section-divider"></div>
     </div>
+    <div class="certs-filter">
+      <button class="filter-btn active" onclick="filterCerts('all')" data-pt="Todos" data-en="All">Todos</button>
+      <button class="filter-btn" onclick="filterCerts('microsoft')" data-pt="Microsoft" data-en="Microsoft">Microsoft</button>
+      <button class="filter-btn" onclick="filterCerts('mct')" data-pt="MCT" data-en="MCT">MCT</button>
+      <button class="filter-btn" onclick="filterCerts('aws')" data-pt="AWS" data-en="AWS">AWS</button>
+      <button class="filter-btn" onclick="filterCerts('linux')" data-pt="Linux" data-en="Linux">Linux</button>
+    </div>
     <div class="certs-grid">
-      <div class="cert-card"><div class="cert-badge">🐧</div><div class="cert-name">LPIC 1 – Linux Professional Institute</div></div>
-      <div class="cert-card"><div class="cert-badge">🎓</div><div class="cert-name">Novell CLA – Certified Linux Administrator</div></div>
-      <div class="cert-card"><div class="cert-badge">🔒</div><div class="cert-name">LFC108: Cybersecurity Essentials</div></div>
-      <div class="cert-card"><div class="cert-badge">🏢</div><div class="cert-name">Novell DCTS – Novell Data Center Technical Specialist</div></div>
-      <div class="cert-card"><div class="cert-badge">🛡️</div><div class="cert-name">Microsoft Certified: Security, Compliance, and Identity Fundamentals</div></div>
+
+      <!-- MCT -->
+      <div class="cert-card" data-cat="mct microsoft"><div class="cert-badge">🎓</div><div class="cert-info"><div class="cert-name">Microsoft Certified Trainer 2025-2026</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido nov 2025 · Expira dez 2026" data-en="Issued Nov 2025 · Expires Dec 2026">Emitido nov 2025 · Expira dez 2026</div></div></div>
+      <div class="cert-card" data-cat="mct microsoft"><div class="cert-badge">🎓</div><div class="cert-info"><div class="cert-name">Microsoft Certified Trainer 2024-2025</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido fev 2024 · Expirado dez 2025" data-en="Issued Feb 2024 · Expired Dec 2025">Emitido fev 2024 · Expirado dez 2025</div></div></div>
+      <div class="cert-card" data-cat="mct microsoft"><div class="cert-badge">🎓</div><div class="cert-info"><div class="cert-name">Microsoft Certified Trainer 2023-2024</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido fev 2023" data-en="Issued Feb 2023">Emitido fev 2023</div></div></div>
+      <div class="cert-card" data-cat="mct microsoft"><div class="cert-badge">🎓</div><div class="cert-info"><div class="cert-name">Microsoft Certified Trainer 2022-2023</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido fev 2022" data-en="Issued Feb 2022">Emitido fev 2022</div></div></div>
+
+      <!-- Microsoft Azure -->
+      <div class="cert-card" data-cat="microsoft"><div class="cert-badge">🪟</div><div class="cert-info"><div class="cert-name">Microsoft Certified: Hybrid Windows Server Administrator Associate</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido nov 2025 · Expira nov 2026" data-en="Issued Nov 2025 · Expires Nov 2026">Emitido nov 2025 · Expira nov 2026</div></div></div>
+      <div class="cert-card" data-cat="microsoft"><div class="cert-badge">🏗️</div><div class="cert-info"><div class="cert-name">Microsoft Certified: Azure Solutions Architect Expert</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido ago 2023" data-en="Issued Aug 2023">Emitido ago 2023</div></div></div>
+      <div class="cert-card" data-cat="microsoft"><div class="cert-badge">🖥️</div><div class="cert-info"><div class="cert-name">Microsoft Certified: Azure Virtual Desktop Specialty</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido jun 2023" data-en="Issued Jun 2023">Emitido jun 2023</div></div></div>
+      <div class="cert-card" data-cat="microsoft"><div class="cert-badge">🔍</div><div class="cert-info"><div class="cert-name">Microsoft Certified: Security Operations Analyst Associate</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido mai 2023 · Expira mai 2025" data-en="Issued May 2023 · Expires May 2025">Emitido mai 2023 · Expira mai 2025</div></div></div>
+      <div class="cert-card" data-cat="microsoft"><div class="cert-badge">🛡️</div><div class="cert-info"><div class="cert-name">Microsoft Certified: Azure Security Engineer Associate</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido jul 2022" data-en="Issued Jul 2022">Emitido jul 2022</div></div></div>
+      <div class="cert-card" data-cat="microsoft"><div class="cert-badge">🔄</div><div class="cert-info"><div class="cert-name">Microsoft Certified: DevOps Engineer Expert</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido jun 2022" data-en="Issued Jun 2022">Emitido jun 2022</div></div></div>
+      <div class="cert-card" data-cat="microsoft"><div class="cert-badge">🌐</div><div class="cert-info"><div class="cert-name">Microsoft Certified: Azure Network Engineer Associate</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido fev 2022 · Expira fev 2025" data-en="Issued Feb 2022 · Expires Feb 2025">Emitido fev 2022 · Expira fev 2025</div></div></div>
+      <div class="cert-card" data-cat="microsoft"><div class="cert-badge">⚙️</div><div class="cert-info"><div class="cert-name">Microsoft Certified: Azure Administrator Associate</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido fev 2022 · Expira fev 2025" data-en="Issued Feb 2022 · Expires Feb 2025">Emitido fev 2022 · Expira fev 2025</div></div></div>
+      <div class="cert-card" data-cat="microsoft"><div class="cert-badge">🏭</div><div class="cert-info"><div class="cert-name">Microsoft Certified: Azure for SAP Workloads Specialty</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido abr 2022 · Expira abr 2025" data-en="Issued Apr 2022 · Expires Apr 2025">Emitido abr 2022 · Expira abr 2025</div></div></div>
+      <div class="cert-card" data-cat="microsoft"><div class="cert-badge">🤖</div><div class="cert-info"><div class="cert-name">Microsoft Certified: Azure AI Fundamentals</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido mar 2022" data-en="Issued Mar 2022">Emitido mar 2022</div></div></div>
+      <div class="cert-card" data-cat="microsoft"><div class="cert-badge">📊</div><div class="cert-info"><div class="cert-name">Microsoft Certified: Azure Data Fundamentals</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido mar 2022" data-en="Issued Mar 2022">Emitido mar 2022</div></div></div>
+      <div class="cert-card" data-cat="microsoft"><div class="cert-badge">🔒</div><div class="cert-info"><div class="cert-name">Microsoft Certified: Security, Compliance, and Identity Fundamentals</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido fev 2024" data-en="Issued Feb 2024">Emitido fev 2024</div></div></div>
+      <div class="cert-card" data-cat="microsoft"><div class="cert-badge">365</div><div class="cert-info"><div class="cert-name">Microsoft 365 Certified: Fundamentals</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido abr 2022" data-en="Issued Apr 2022">Emitido abr 2022</div></div></div>
+      <div class="cert-card" data-cat="microsoft"><div class="cert-badge">☁️</div><div class="cert-info"><div class="cert-name">Microsoft Certified: Azure Fundamentals</div><div class="cert-issuer">Microsoft</div><div class="cert-date" data-pt="Emitido ago 2019" data-en="Issued Aug 2019">Emitido ago 2019</div></div></div>
+
+      <!-- AWS -->
+      <div class="cert-card" data-cat="aws"><div class="cert-badge">🟠</div><div class="cert-info"><div class="cert-name">AWS Certified Solutions Architect – Associate</div><div class="cert-issuer">Amazon Web Services (AWS)</div><div class="cert-date" data-pt="Emitido dez 2024 · Expira dez 2027" data-en="Issued Dec 2024 · Expires Dec 2027">Emitido dez 2024 · Expira dez 2027</div></div></div>
+
+      <!-- Linux / RedHat / LF -->
+      <div class="cert-card" data-cat="linux"><div class="cert-badge">🎩</div><div class="cert-info"><div class="cert-name">Red Hat System Administration II (RH134) - Ver. 9.0</div><div class="cert-issuer">Red Hat</div><div class="cert-date" data-pt="Emitido jun 2024" data-en="Issued Jun 2024">Emitido jun 2024</div></div></div>
+      <div class="cert-card" data-cat="linux"><div class="cert-badge">🎩</div><div class="cert-info"><div class="cert-name">Red Hat System Administration I (RH124) - Ver. 9.0</div><div class="cert-issuer">Red Hat</div><div class="cert-date" data-pt="Emitido jun 2024" data-en="Issued Jun 2024">Emitido jun 2024</div></div></div>
+      <div class="cert-card" data-cat="linux"><div class="cert-badge">🐧</div><div class="cert-info"><div class="cert-name">LFC108: Cybersecurity Essentials</div><div class="cert-issuer">The Linux Foundation</div><div class="cert-date" data-pt="Emitido abr 2024" data-en="Issued Apr 2024">Emitido abr 2024</div></div></div>
+      <div class="cert-card" data-cat="linux"><div class="cert-badge">🌱</div><div class="cert-info"><div class="cert-name">LFC131: Green Software for Practitioners</div><div class="cert-issuer">The Linux Foundation</div><div class="cert-date" data-pt="Emitido fev 2024" data-en="Issued Feb 2024">Emitido fev 2024</div></div></div>
+      <div class="cert-card" data-cat="linux"><div class="cert-badge">🐧</div><div class="cert-info"><div class="cert-name">LPIC 1 – Linux Professional Institute</div><div class="cert-issuer">Linux Professional Institute (LPI)</div><div class="cert-date" data-pt="Emitido out 2013" data-en="Issued Oct 2013">Emitido out 2013</div></div></div>
+      <div class="cert-card" data-cat="linux"><div class="cert-badge">📋</div><div class="cert-info"><div class="cert-name">Novell CLA – Certified Linux Administrator</div><div class="cert-issuer">Novell</div><div class="cert-date" data-pt="Emitido out 2013" data-en="Issued Oct 2013">Emitido out 2013</div></div></div>
+      <div class="cert-card" data-cat="linux"><div class="cert-badge">🏢</div><div class="cert-info"><div class="cert-name">Novell DCTS – Novell Data Center Technical Specialist</div><div class="cert-issuer">Novell</div><div class="cert-date" data-pt="Emitido out 2013" data-en="Issued Oct 2013">Emitido out 2013</div></div></div>
+
+      <!-- Others -->
+      <div class="cert-card" data-cat="other"><div class="cert-badge">🐙</div><div class="cert-info"><div class="cert-name">GitHub Foundations</div><div class="cert-issuer">GitHub</div><div class="cert-date" data-pt="Emitido abr 2024 · Expira abr 2027" data-en="Issued Apr 2024 · Expires Apr 2027">Emitido abr 2024 · Expira abr 2027</div></div></div>
+      <div class="cert-card" data-cat="other"><div class="cert-badge">👥</div><div class="cert-info"><div class="cert-name">License to Hire</div><div class="cert-issuer">SocialTalent</div><div class="cert-date" data-pt="Emitido set 2023" data-en="Issued Sep 2023">Emitido set 2023</div></div></div>
+
     </div>
   </div>
 </section>
@@ -535,9 +526,10 @@
     </div>
     <div class="edu-grid">
       <div class="edu-card">
-        <div class="edu-school">🎓 Universidade Estácio de Sá</div>
+        <div class="edu-school">🎓 Estácio</div>
         <div class="edu-degree" data-pt="Especialização em Segurança de Redes de Computadores" data-en="Specialization in Computer Network Security">Especialização em Segurança de Redes de Computadores</div>
         <div class="edu-years">📅 2014 – 2016</div>
+        <div class="edu-skills" data-pt="Segurança da informação · Segurança" data-en="Information Security · Security">Segurança da informação · Segurança</div>
       </div>
       <div class="edu-card">
         <div class="edu-school">🎓 FACIR – Faculdade de Informática do Recife</div>
@@ -546,8 +538,9 @@
       </div>
       <div class="edu-card">
         <div class="edu-school">🎓 Senac Brasil</div>
-        <div class="edu-degree" data-pt="Técnico em Informática – Tecnologia da Informação" data-en="IT Technician – Information Technology">Técnico em Informática – Tecnologia da Informação</div>
+        <div class="edu-degree" data-pt="Técnico de Informática – Information Technology" data-en="IT Technician – Information Technology">Técnico de Informática – Information Technology</div>
         <div class="edu-years">📅 2004 – 2005</div>
+        <div class="edu-skills" data-pt="Manutenção e montagem de computadores · Configuração e administração de redes · Segurança de redes" data-en="Computer maintenance & assembly · Network configuration & administration · Network security">Manutenção e montagem de computadores · Configuração e administração de redes · Segurança de redes</div>
       </div>
     </div>
   </div>
@@ -596,24 +589,30 @@
     if (body.classList.contains('dark')) {
       body.classList.remove('dark');
       icon.textContent  = '🌙';
-      label.textContent = currentLang === 'pt' ? 'Dark' : 'Dark';
+      label.textContent = 'Dark';
     } else {
       body.classList.add('dark');
       icon.textContent  = '☀️';
-      label.textContent = currentLang === 'pt' ? 'Light' : 'Light';
+      label.textContent = 'Light';
     }
   }
 
   function toggleLang() {
     currentLang = currentLang === 'pt' ? 'en' : 'pt';
-    const label = document.getElementById('langLabel');
-    label.textContent = currentLang === 'pt' ? 'EN' : 'PT';
+    document.getElementById('langLabel').textContent = currentLang === 'pt' ? 'EN' : 'PT';
     document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en-US';
-
-    // Update all elements with data-pt / data-en
     document.querySelectorAll('[data-pt]').forEach(el => {
       const val = el.getAttribute('data-' + currentLang);
       if (val) el.textContent = val;
+    });
+  }
+
+  function filterCerts(cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.cert-card').forEach(card => {
+      const cats = card.getAttribute('data-cat') || '';
+      card.classList.toggle('hidden', cat !== 'all' && !cats.includes(cat));
     });
   }
 </script>
