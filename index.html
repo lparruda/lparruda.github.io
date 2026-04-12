@@ -580,7 +580,16 @@
 </footer>
 
 <script>
-  let currentLang = 'pt';
+  let currentLang = localStorage.getItem('lang') || 'pt';
+
+  function applyLang(lang) {
+    document.getElementById('langLabel').textContent = lang === 'pt' ? 'EN' : 'PT';
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en-US';
+    document.querySelectorAll('[data-pt]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (val) el.textContent = val;
+    });
+  }
 
   function toggleTheme() {
     const body = document.body;
@@ -590,22 +599,32 @@
       body.classList.remove('dark');
       icon.textContent  = '🌙';
       label.textContent = 'Dark';
+      localStorage.setItem('theme', 'light');
     } else {
       body.classList.add('dark');
       icon.textContent  = '☀️';
       label.textContent = 'Light';
+      localStorage.setItem('theme', 'dark');
     }
   }
 
   function toggleLang() {
     currentLang = currentLang === 'pt' ? 'en' : 'pt';
-    document.getElementById('langLabel').textContent = currentLang === 'pt' ? 'EN' : 'PT';
-    document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en-US';
-    document.querySelectorAll('[data-pt]').forEach(el => {
-      const val = el.getAttribute('data-' + currentLang);
-      if (val) el.textContent = val;
-    });
+    localStorage.setItem('lang', currentLang);
+    applyLang(currentLang);
   }
+
+  // Restore saved preferences on load
+  (function() {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      document.getElementById('themeIcon').textContent  = '☀️';
+      document.getElementById('themeLabel').textContent = 'Light';
+    }
+    if (currentLang !== 'pt') {
+      applyLang(currentLang);
+    }
+  })();
 
   function filterCerts(cat) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
